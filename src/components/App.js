@@ -1,28 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import NavBar from './NavBar';
-import Search from './Search';
 import Home from './Home';
-import Form from './Form';
+import BrowseShips from './BrowseShips';
+import BrowseCharacters from './BrowseCharacters';
+import CharacterForm from './CharacterForm';
+import ShipForm from './ShipForm';
 import '../assets/css/App.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 function App() {
   return (
     <div className='app'>
       <Header />
       <NavBar />
-      <Switch>
-        <Route exact path='/search'>
-          <Search />
+      <Home />
+      {/* <Switch>
+        <Route exact path='/characters'>
+          <BrowseShips />
         </Route>
-        <Route exact path='/form'>
-          <Form />
+        <Route exact path='/characters'>
+          <BrowseCharacters />
+        </Route>
+        <Route exact path='/ship-form'>
+          <ShipForm />
+        </Route>
+        <Route exact path='/char-form'>
+          <CharacterForm />
         </Route>
         <Route exact path='/'>
           <Home />
         </Route>
-      </Switch>
+      </Switch> */}
     </div>
   );
 }
