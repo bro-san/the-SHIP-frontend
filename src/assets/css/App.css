@@ -14,17 +14,18 @@ button {
   cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* @media (prefers-reduced-motion: no-preference) {
+  .ship {
+    animation: Ship-logo-forward infinite 5s linear;
+    animation: Ship-logo-back infinite 5s linear;
   }
 }
 
-@keyframes App-logo-spin {
+@keyframes Ship-logo-forward {
   from {
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(-10deg);
   }
-}
+} */
