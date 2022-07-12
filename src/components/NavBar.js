@@ -10,17 +10,22 @@ function NavBar() {
           Home
         </Typography>
       </NavLink>
-      <NavLink exact to='/browse'>
+      <NavLink exact to='/ships'>
         <Typography variant='button' display='block' gutterBottom>
-          Browse Ships/Characters
+          Browse Ships
         </Typography>
       </NavLink>
-      <NavLink exact to='/ships'>
+      <NavLink exact to='/characters'>
+        <Typography variant='button' display='block' gutterBottom>
+          Browse Characters
+        </Typography>
+      </NavLink>
+      <NavLink exact to='/ship-form'>
         <Typography variant='button' display='block' gutterBottom>
           Add Ships
         </Typography>
       </NavLink>
-      <NavLink exact to='/characters'>
+      <NavLink exact to='/char-form'>
         <Typography variant='button' display='block' gutterBottom>
           Add Characters
         </Typography>

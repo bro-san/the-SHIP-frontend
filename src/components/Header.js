@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 
 function Header() {
@@ -10,13 +11,15 @@ function Header() {
         component='div'
         sx={{ margin: '10px' }}
       >
-        <img
-          src='https://cdn1.iconfinder.com/data/icons/honeymoon-filled/64/honeymoon-04-1024.png'
-          alt='ship with heart'
-          height='75px'
-          title='the ship'
-          className='ship'
-        />
+        <NavLink exact to='/'>
+          <img
+            src='https://cdn1.iconfinder.com/data/icons/honeymoon-filled/64/honeymoon-04-1024.png'
+            alt='ship with heart'
+            height='75px'
+            title='the ship'
+            className='animate__animated animate__pulse'
+          />
+        </NavLink>
         THE SHIP
         <Typography
           variant='h4'

@@ -1,7 +1,14 @@
 import React from 'react';
+import CharacterCard from './CharacterCard';
 
-function Characters() {
-  return <div>Characters</div>;
+function BrowseCharacters({ waifuData }) {
+  return (
+    <>
+      {/* {waifuData.map((waifu) => (
+        <CharacterCard key={waifu.id} name={waifu.name} />
+      ))} */}
+    </>
+  );
 }
 
-export default Characters;
+export default BrowseCharacters;
