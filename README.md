@@ -1,7 +1,8 @@
 # The Ship
 
 The Ship is a web page where weebs and weebs alike can view their favorite waifus and husbandos and choose who they think belongs together! Each character has its traits described, including its name, gender, an image and the anime they came from.
-Will you agree? Will you hate it? Will I stop talking?
+
+Will you agree? Will you hate it? Will I ever stop talking?
 Theres only one way to find out.
 
 # Getting Started
