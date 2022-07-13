@@ -1,12 +1,19 @@
-import React from 'react';
-import CharacterCard from './CharacterCard';
+import React from "react";
+import CharacterCard from "./CharacterCard";
 
-function BrowseCharacters({ waifuData }) {
+function BrowseCharacters({ allCharacters }) {
   return (
     <>
-      {/* {waifuData.map((waifu) => (
-        <CharacterCard key={waifu.id} name={waifu.name} />
-      ))} */}
+      {allCharacters.map((character) => (
+        <CharacterCard
+          key={character.anime_id}
+          name={character.name}
+          animeName={character.anime_name}
+          image={character.character_image}
+          desc={character.desc}
+          gender={character.gender}
+        />
+      ))}
     </>
   );
 }
