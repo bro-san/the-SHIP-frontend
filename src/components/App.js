@@ -17,9 +17,11 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [allCharacters, setAllCharacters] = useState([]);
+  const [ship1, setShip1] = useState();
+  const [ship2, setShip2] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:3000/characters")
+    fetch("http://localhost:9292/characters")
       .then((response) => response.json())
       .then((data) => setAllCharacters(data));
   }, []);
@@ -32,7 +34,11 @@ function App() {
           <BrowseShips />
         </Route>
         <Route exact path="/characters">
-          <BrowseCharacters allCharacters={allCharacters}/>
+          <BrowseCharacters
+            allCharacters={allCharacters}
+            setShip1={setShip1}
+            setShip2={setShip2}
+          />
         </Route>
         <Route exact path="/ship-form">
           <ShipForm />
