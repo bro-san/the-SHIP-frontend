@@ -37,6 +37,7 @@ function ShipCard({ name, comments, char1, char2 }) {
       {/* {comments.map((comment) => (
         <Comment comment={comment} />
       ))} */}
+
     </div>
   );
 }

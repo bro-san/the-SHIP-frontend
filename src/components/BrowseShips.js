@@ -1,6 +1,7 @@
 import React from 'react';
 import ShipCard from './ShipCard';
 
+
 function BrowseShips({ allShips, allCharacters }) {
   return (
     <>
@@ -12,6 +13,7 @@ function BrowseShips({ allShips, allCharacters }) {
           char1={ship.character1_id}
           char2={ship.character2_id}
           allCharacters={allCharacters}
+          allComments={allComments}
         />
       ))}
     </>

@@ -24,11 +24,21 @@ function App() {
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
   const [allShips, setAllShips] = useState([]);
+  const [allComments, setAllComments] =useState ([])
+
 
   useEffect(() => {
     fetch('http://localhost:9292/characters')
       .then((response) => response.json())
       .then((data) => setAllCharacters(data));
+      
+    fetch("http://localhost:9292/ships")
+      .then((response) => response.json())
+      .then((data) => setAllShips(data))
+    
+    fetch("http://localhost:9292/comments")
+      .then((response) => response.json())
+      .then((data) => setAllComments(data));
   }, []);
 
   useEffect(() => {
@@ -54,17 +64,21 @@ function App() {
       body: JSON.stringify(shipObject),
     })
       .then((response) => response.json())
-      .then((data) => setAllShips(data));
+      .then((data) => console(data));
 
     setChecked1(false);
+  }
+
+  function addCharacter(newCharacter) {
+    setAllCharacters([...allCharacters, newCharacter]);
   }
   return (
     <div className='app'>
       <Header />
       <NavBar />
       <Switch>
-        <Route exact path='/ships'>
-          <BrowseShips allShips={allShips} allCharacters={allCharacters} />
+        <Route exact path="/ships">
+          <BrowseShips allShips={allShips} allCharacters={allCharacters} allComments={allComments}/>
         </Route>
         <Route exact path='/characters'>
           <BrowseCharacters
@@ -83,8 +97,8 @@ function App() {
         <Route exact path='/ship-form'>
           <ShipForm />
         </Route>
-        <Route exact path='/char-form'>
-          <CharacterForm />
+        <Route exact path="/char-form">
+          <CharacterForm addCharacter={addCharacter} />
         </Route>
         <Route exact path='/'>
           <Home />
