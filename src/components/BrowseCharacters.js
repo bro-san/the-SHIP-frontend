@@ -17,8 +17,11 @@ function BrowseCharacters({
 }) {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const searchCharacters = allCharacters.filter((character) =>
-    character.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const searchCharacters = allCharacters.filter(
+    (character) =>
+      character.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      character.gender.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      character.anime_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
