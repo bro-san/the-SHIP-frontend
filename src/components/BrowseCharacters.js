@@ -1,6 +1,7 @@
-import React from "react";
-import CharacterCard from "./CharacterCard";
-import { useState } from "react";
+import React from 'react';
+import CharacterCard from './CharacterCard';
+import Search from './Search';
+import { useState } from 'react';
 
 function BrowseCharacters({
   allCharacters,
@@ -9,17 +10,25 @@ function BrowseCharacters({
   createShip,
   setShip1Name,
   setShip2Name,
-  checked1, 
+  checked1,
   setChecked1,
   checked2,
-  setChecked2
+  setChecked2,
 }) {
+  const [searchQuery, setSearchQuery] = useState('');
 
+  const searchCharacters = allCharacters.filter(
+    (character) =>
+      character.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      character.gender.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      character.anime_name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
+      <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <button onClick={createShip}>Ship that couple!</button>
-      {allCharacters.map((character) => (
+      {searchCharacters.map((character) => (
         <CharacterCard
           key={character.id}
           id={character.id}
