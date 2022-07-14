@@ -13,6 +13,7 @@ function ShipCard({ name, comments, char1, char2 }) {
       .then((response) => response.json())
       .then((data) => setShipPic2(data.imageURL));
   };
+
   characterRetriever(char1, char2);
   return (
     <div className='ship-card'>
@@ -37,7 +38,6 @@ function ShipCard({ name, comments, char1, char2 }) {
       {/* {comments.map((comment) => (
         <Comment comment={comment} />
       ))} */}
-
     </div>
   );
 }

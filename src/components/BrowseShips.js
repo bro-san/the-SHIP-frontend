@@ -1,8 +1,7 @@
 import React from 'react';
 import ShipCard from './ShipCard';
 
-
-function BrowseShips({ allShips, allCharacters }) {
+function BrowseShips({ allShips, allCharacters, allComments }) {
   return (
     <>
       {allShips.map((ship) => (

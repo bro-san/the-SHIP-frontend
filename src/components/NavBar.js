@@ -20,11 +20,6 @@ function NavBar() {
           Browse Characters
         </Typography>
       </NavLink>
-      <NavLink exact to='/ship-form'>
-        <Typography variant='button' display='block' gutterBottom>
-          Add Ships
-        </Typography>
-      </NavLink>
       <NavLink exact to='/char-form'>
         <Typography variant='button' display='block' gutterBottom>
           Add Characters

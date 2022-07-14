@@ -6,7 +6,6 @@ import Home from './Home';
 import BrowseShips from './BrowseShips';
 import BrowseCharacters from './BrowseCharacters';
 import CharacterForm from './CharacterForm';
-import ShipForm from './ShipForm';
 import '../assets/css/App.css';
 import 'animate.css';
 import '@fontsource/roboto/300.css';
@@ -24,19 +23,18 @@ function App() {
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
   const [allShips, setAllShips] = useState([]);
-  const [allComments, setAllComments] =useState ([])
-
+  const [allComments, setAllComments] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:9292/characters')
       .then((response) => response.json())
       .then((data) => setAllCharacters(data));
-      
-    fetch("http://localhost:9292/ships")
+
+    fetch('http://localhost:9292/ships')
       .then((response) => response.json())
-      .then((data) => setAllShips(data))
-    
-    fetch("http://localhost:9292/comments")
+      .then((data) => setAllShips(data));
+
+    fetch('http://localhost:9292/comments')
       .then((response) => response.json())
       .then((data) => setAllComments(data));
   }, []);
@@ -77,8 +75,12 @@ function App() {
       <Header />
       <NavBar />
       <Switch>
-        <Route exact path="/ships">
-          <BrowseShips allShips={allShips} allCharacters={allCharacters} allComments={allComments}/>
+        <Route exact path='/ships'>
+          <BrowseShips
+            allShips={allShips}
+            allCharacters={allCharacters}
+            allComments={allComments}
+          />
         </Route>
         <Route exact path='/characters'>
           <BrowseCharacters
@@ -94,10 +96,7 @@ function App() {
             setChecked2={setChecked2}
           />
         </Route>
-        <Route exact path='/ship-form'>
-          <ShipForm />
-        </Route>
-        <Route exact path="/char-form">
+        <Route exact path='/char-form'>
           <CharacterForm addCharacter={addCharacter} />
         </Route>
         <Route exact path='/'>
