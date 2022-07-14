@@ -23,6 +23,7 @@ function App() {
   const [ship2Name, setShip2Name] = useState("");
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
+  const [allShips, setAllShips] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:9292/characters")
@@ -31,12 +32,14 @@ function App() {
   }, []);
 
   function createShip() {
+    console.log("createShip");
     const shipObject = {
-      id: "",
       name: `${ship1Name} x ${ship2Name}`,
-      character1_id: ship1,
-      character2_id: ship2,
+      character1_id: ship1.id,
+      character2_id: ship2.id,
     };
+    console.log(shipObject);
+
     fetch("http://localhost:9292/ships", {
       method: "POST",
       headers: {

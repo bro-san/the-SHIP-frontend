@@ -1,7 +1,7 @@
 import React from 'react';
 
 function BrowseShips() {
-  return <div>BrowseShips</div>;
+  return <div></div>;
 }
 
 export default BrowseShips;
