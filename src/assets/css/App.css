@@ -3,10 +3,11 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 5vh;
-  padding-bottom: 0px;
+  padding-top: 10px;
+  padding-bottom: 5px;
   position: sticky;
   top: 0px;
-  color: #ffffff;
+  background-color: #ffffff;
   z-index: 1000;
 }
 
@@ -14,6 +15,18 @@ button {
   cursor: pointer;
 }
 
+.header {
+  background-color: #ffffff;
+}
+
+.ship-card {
+  display: flex;
+}
+
+.ship-button {
+  position: sticky;
+  top: 60px;
+}
 /* @media (prefers-reduced-motion: no-preference) {
   .ship {
     animation: Ship-logo-forward infinite 5s linear;
