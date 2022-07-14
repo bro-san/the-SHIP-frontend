@@ -23,12 +23,21 @@ function App() {
   const [ship2Name, setShip2Name] = useState("");
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
-  const [allShips, setAllShips] = useState("");
+  const [allShips, setAllShips] = useState([]);
+  const [allComments, setAllComments] =useState ([])
 
   useEffect(() => {
     fetch("http://localhost:9292/characters")
       .then((response) => response.json())
       .then((data) => setAllCharacters(data));
+      
+    fetch("http://localhost:9292/ships")
+      .then((response) => response.json())
+      .then((data) => setAllShips(data))
+    
+    fetch("http://localhost:9292/comments")
+      .then((response) => response.json())
+      .then((data) => setAllComments(data));
   }, []);
 
   function createShip() {
@@ -48,7 +57,7 @@ function App() {
       body: JSON.stringify(shipObject),
     })
       .then((response) => response.json())
-      .then((data) => setAllShips(data));
+      .then((data) => console(data));
 
     setChecked1(false);
   }
@@ -62,7 +71,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/ships">
-          <BrowseShips allShips={allShips} />
+          <BrowseShips allShips={allShips} allComments={allComments}/>
         </Route>
         <Route exact path="/characters">
           <BrowseCharacters
