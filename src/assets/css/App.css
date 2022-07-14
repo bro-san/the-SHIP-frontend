@@ -21,24 +21,26 @@ button {
 
 .ship-card {
   display: flex;
+  padding: 10px;
+  max-width: 100%;
 }
 
 .ship-button {
   position: sticky;
   top: 60px;
 }
-/* @media (prefers-reduced-motion: no-preference) {
-  .ship {
-    animation: Ship-logo-forward infinite 5s linear;
-    animation: Ship-logo-back infinite 5s linear;
-  }
+
+.name-btn {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5px;
+  height: max-content;
 }
 
-@keyframes Ship-logo-forward {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-10deg);
-  }
-} */
+.name-btn h2 {
+  margin: 1px;
+}
+
+.ship-comment-btn {
+  padding-right: 5px;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Comment from './Comment';
+// import Comment from './Comment';
 
 function ShipCard({ name, comments, char1, char2 }) {
   const [shipPic1, setShipPic1] = useState('');
@@ -15,10 +15,14 @@ function ShipCard({ name, comments, char1, char2 }) {
   };
 
   characterRetriever(char1, char2);
+
   return (
     <div className='ship-card'>
-      <div className='name-img'>
-        <h2>{name}</h2>
+      <div className='name-btn-img'>
+        <div className='name-btn'>
+          <h2>{name}</h2>
+          <button className='ship-comment-btn'>Add Comment</button>
+        </div>
         <img
           src={shipPic1}
           height='150'
