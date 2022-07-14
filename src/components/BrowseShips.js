@@ -3,8 +3,11 @@ import ShipCard from "./ShipCard";
 
 function BrowseShips({ allShips, allComments }) {
   
+  // console.log(allComments)
+
   const newShip = allShips.map(ship => {
-    return <ShipCard allComments={allComments} name={ship.name} key={ship.id} shipId={ship.id} character1_id={ship.character1_id} character2_id={ship.character2_id} />
+    // const comments = allComments.filter(comment => comment["ship_id"] == shipId))
+    return <ShipCard allComments={allComments} name={ship.name} key={ship.id} character1_id={ship.character1_id} character2_id={ship.character2_id} />
   })
   
   return (
