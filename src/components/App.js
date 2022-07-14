@@ -61,6 +61,10 @@ function App() {
 
     setChecked1(false);
   }
+
+  function addCharacter(newCharacter) {
+    setAllCharacters([...allCharacters, newCharacter]);
+  }
   return (
     <div className="app">
       <Header />
@@ -87,7 +91,7 @@ function App() {
           <ShipForm />
         </Route>
         <Route exact path="/char-form">
-          <CharacterForm />
+          <CharacterForm addCharacter={addCharacter} />
         </Route>
         <Route exact path="/">
           <Home />
