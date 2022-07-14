@@ -15,19 +15,32 @@ function BrowseCharacters({
   checked2,
   setChecked2,
 }) {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [optionQuery, setOptionQuery] = useState('All');
+  const [formQuery, setFormQuery] = useState('');
 
-  const searchCharacters = allCharacters.filter(
+  const filterCharacters =
+    optionQuery !== 'All'
+      ? allCharacters.filter((character) => character.gender === optionQuery)
+      : allCharacters.filter((character) => character.gender !== optionQuery);
+
+  console.log(filterCharacters);
+  const searchCharacters = filterCharacters.filter(
     (character) =>
-      character.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      character.gender.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      character.anime_name.toLowerCase().includes(searchQuery.toLowerCase())
+      character.name.toLowerCase().includes(formQuery.toLowerCase()) ||
+      character.anime_name.toLowerCase().includes(formQuery.toLowerCase())
   );
 
   return (
     <>
-      <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <button onClick={createShip}>Ship that couple!</button>
+      <Search
+        formQuery={formQuery}
+        setFormQuery={setFormQuery}
+        optionQuery={optionQuery}
+        setOptionQuery={setOptionQuery}
+      />
+      <button className='ship-button' onClick={createShip}>
+        Ship that couple!
+      </button>
       {searchCharacters.map((character) => (
         <CharacterCard
           key={character.id}

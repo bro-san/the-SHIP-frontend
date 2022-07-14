@@ -1,18 +1,21 @@
-import React from "react";
-import ShipCard from "./ShipCard";
+import React from 'react';
+import ShipCard from './ShipCard';
 
-function BrowseShips({ allShips, allComments }) {
-  
-  // console.log(allComments)
 
-  const newShip = allShips.map(ship => {
-    // const comments = allComments.filter(comment => comment["ship_id"] == shipId))
-    return <ShipCard allComments={allComments} name={ship.name} key={ship.id} character1_id={ship.character1_id} character2_id={ship.character2_id} />
-  })
-  
+function BrowseShips({ allShips, allCharacters }) {
   return (
     <>
-      {newShip}
+      {allShips.map((ship) => (
+        <ShipCard
+          name={ship.name}
+          comments={ship.comments}
+          key={ship.id}
+          char1={ship.character1_id}
+          char2={ship.character2_id}
+          allCharacters={allCharacters}
+          allComments={allComments}
+        />
+      ))}
     </>
   );
 }

@@ -1,33 +1,34 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import Header from "./Header";
-import NavBar from "./NavBar";
-import Home from "./Home";
-import BrowseShips from "./BrowseShips";
-import BrowseCharacters from "./BrowseCharacters";
-import CharacterForm from "./CharacterForm";
-import ShipForm from "./ShipForm";
-import "../assets/css/App.css";
-import "animate.css";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import { useEffect, useState } from "react";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Header from './Header';
+import NavBar from './NavBar';
+import Home from './Home';
+import BrowseShips from './BrowseShips';
+import BrowseCharacters from './BrowseCharacters';
+import CharacterForm from './CharacterForm';
+import ShipForm from './ShipForm';
+import '../assets/css/App.css';
+import 'animate.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [allCharacters, setAllCharacters] = useState([]);
-  const [ship1, setShip1] = useState("");
-  const [ship2, setShip2] = useState("");
-  const [ship1Name, setShip1Name] = useState("");
-  const [ship2Name, setShip2Name] = useState("");
+  const [ship1, setShip1] = useState('');
+  const [ship2, setShip2] = useState('');
+  const [ship1Name, setShip1Name] = useState('');
+  const [ship2Name, setShip2Name] = useState('');
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
   const [allShips, setAllShips] = useState([]);
   const [allComments, setAllComments] =useState ([])
 
+
   useEffect(() => {
-    fetch("http://localhost:9292/characters")
+    fetch('http://localhost:9292/characters')
       .then((response) => response.json())
       .then((data) => setAllCharacters(data));
       
@@ -40,8 +41,14 @@ function App() {
       .then((data) => setAllComments(data));
   }, []);
 
+  useEffect(() => {
+    fetch('http://localhost:9292/ships')
+      .then((response) => response.json())
+      .then((data) => setAllShips(data));
+  }, []);
+
   function createShip() {
-    console.log("createShip");
+    console.log('createShip');
     const shipObject = {
       name: `${ship1Name} x ${ship2Name}`,
       character1_id: ship1,
@@ -49,10 +56,10 @@ function App() {
     };
     console.log(shipObject);
 
-    fetch("http://localhost:9292/ships", {
-      method: "POST",
+    fetch('http://localhost:9292/ships', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(shipObject),
     })
@@ -66,14 +73,14 @@ function App() {
     setAllCharacters([...allCharacters, newCharacter]);
   }
   return (
-    <div className="app">
+    <div className='app'>
       <Header />
       <NavBar />
       <Switch>
         <Route exact path="/ships">
-          <BrowseShips allShips={allShips} allComments={allComments}/>
+          <BrowseShips allShips={allShips} allCharacters={allCharacters} allComments={allComments}/>
         </Route>
-        <Route exact path="/characters">
+        <Route exact path='/characters'>
           <BrowseCharacters
             allCharacters={allCharacters}
             setShip1={setShip1}
@@ -87,13 +94,13 @@ function App() {
             setChecked2={setChecked2}
           />
         </Route>
-        <Route exact path="/ship-form">
+        <Route exact path='/ship-form'>
           <ShipForm />
         </Route>
         <Route exact path="/char-form">
           <CharacterForm addCharacter={addCharacter} />
         </Route>
-        <Route exact path="/">
+        <Route exact path='/'>
           <Home />
         </Route>
       </Switch>
