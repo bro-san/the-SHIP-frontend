@@ -35,8 +35,8 @@ function App() {
     console.log("createShip");
     const shipObject = {
       name: `${ship1Name} x ${ship2Name}`,
-      character1_id: ship1.id,
-      character2_id: ship2.id,
+      character1_id: ship1,
+      character2_id: ship2,
     };
     console.log(shipObject);
 
@@ -48,7 +48,7 @@ function App() {
       body: JSON.stringify(shipObject),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => setAllShips(data));
 
     setChecked1(false);
   }
@@ -58,7 +58,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/ships">
-          <BrowseShips />
+          <BrowseShips allShips={allShips}/>
         </Route>
         <Route exact path="/characters">
           <BrowseCharacters
