@@ -19,7 +19,7 @@ function Home() {
         className='animate__animated animate__fadeIn'
         sx={{ margin: '5px' }}
       >
-        Welcome! Feel free to browse and create ships, and don't forget to
+        Welcome! Feel free to browse and comment on ships, and don't forget to
         create your own!
       </Typography>
     </>
