@@ -62,7 +62,7 @@ function App() {
       body: JSON.stringify(shipObject),
     })
       .then((response) => response.json())
-      .then((data) => console(data));
+      .then((data) => onChangeComment(data));
 
     setChecked1(false);
   }

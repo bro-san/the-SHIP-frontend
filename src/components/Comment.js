@@ -24,8 +24,9 @@ function Comment({ id, name, comment, onChangeComment }) {
   const handleClickDelete = () => {
     fetch(`http://localhost:9292/comments/${id}`, {
       method: 'DELETE',
-    });
-    onChangeComment("run")
+    })
+    .then((response) => response.json())
+    .then((data) => onChangeComment(data))
   };
 
   return (
