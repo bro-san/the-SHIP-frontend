@@ -30,8 +30,8 @@ function CharacterForm({ addCharacter }) {
       },
       body: JSON.stringify(formData),
     })
-      .then((response) => response.json())
-      .then((data) => addCharacter(data));
+      .then(response => response.json())
+      .then(data => addCharacter(data));
     setFormData(initialObject);
   }
 
