@@ -77,22 +77,27 @@ button {
   column-gap: 5px;
   row-gap: 5px;
   justify-content: space-between;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background-color: white;
   border-radius: 5px;
 }
 
 .ship-image {
   width: 150px;
+  border-radius: 5px;
 }
 
 .ship-comment-btn {
-  padding-right: 5px;
+  margin-top: 5px;
+  /* height: 25px; */
   /* max-width: 100%; */
   max-height: 100%;
+  /* border-radius: 8px; */
+}
 
-  border-radius: 7px;
+button {
+  /* border-radius: 1px; */
 }
 
 .comment-list {
@@ -107,8 +112,8 @@ button {
 .character-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
-  column-gap: 50px;
-  row-gap: 5px;
+  column-gap: 25px;
+  row-gap: 15px;
   justify-content: space-evenly;
   padding-top: 10px;
 }
@@ -126,6 +131,12 @@ button {
   background-color: #f2d7d9;
 }
 .character-image-container {
-  background-color: white;
+  /* background-color: white; */
   border-radius: 5px;
+}
+
+.character-img {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
 }
