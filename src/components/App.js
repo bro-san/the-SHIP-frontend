@@ -62,7 +62,7 @@ function App() {
       body: JSON.stringify(shipObject),
     })
       .then((response) => response.json())
-      .then((data) => console(data));
+      .then((data) => onChangeComment(data));
 
     setChecked1(false);
   }
@@ -72,8 +72,11 @@ function App() {
     setAllCharacters(newCharactersArray);
   }
 
-  function onAddComment(data) {
-    console.log(data) 
+  function onChangeComment(comment) {
+    console.log(comment)
+    fetch('http://localhost:9292/ships?include_comments')
+      .then((response) => response.json())
+      .then((data) => setAllShips(data));
   }
 
   return (
@@ -85,7 +88,7 @@ function App() {
           <BrowseShips
             allShips={allShips}
             allCharacters={allCharacters}
-            onAddComment={onAddComment}
+            onChangeComment={onChangeComment}
             // allComments={allComments}
           />
         </Route>

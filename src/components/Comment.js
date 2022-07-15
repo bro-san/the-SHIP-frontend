@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Comment({ id, name, comment }) {
+function Comment({ id, name, comment, onChangeComment }) {
   // const [formContent, setFormContent] = useState('');
 
   const handleClickEdit = () => {
@@ -18,13 +18,15 @@ function Comment({ id, name, comment }) {
       body: JSON.stringify(changes),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => onChangeComment(data));
   };
 
   const handleClickDelete = () => {
     fetch(`http://localhost:9292/comments/${id}`, {
       method: 'DELETE',
-    });
+    })
+    .then((response) => response.json())
+    .then((data) => onChangeComment(data))
   };
 
   return (
