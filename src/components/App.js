@@ -68,8 +68,14 @@ function App() {
   }
 
   function addCharacter(newCharacter) {
-    setAllCharacters([...allCharacters, newCharacter]);
+    const newCharactersArray = [...allCharacters, newCharacter]
+    setAllCharacters(newCharactersArray);
   }
+
+  function onAddComment(data) {
+    console.log(data) 
+  }
+
   return (
     <div className='app'>
       <Header />
@@ -79,6 +85,7 @@ function App() {
           <BrowseShips
             allShips={allShips}
             allCharacters={allCharacters}
+            onAddComment={onAddComment}
             // allComments={allComments}
           />
         </Route>

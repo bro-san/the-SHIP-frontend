@@ -1,7 +1,7 @@
 import React from 'react';
 import ShipCard from './ShipCard';
 
-function BrowseShips({ allShips, allCharacters }) {
+function BrowseShips({ allShips, allCharacters, onAddComment }) {
   return (
     <>
       {allShips.map((ship) => (
@@ -9,6 +9,7 @@ function BrowseShips({ allShips, allCharacters }) {
           name={ship.name}
           comment_list={ship.comment_list}
           key={ship.id}
+          shipID={ship.id}
           char1={ship.character1_id}
           char2={ship.character2_id}
           allCharacters={allCharacters}

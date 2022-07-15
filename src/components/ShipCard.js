@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
 
-function ShipCard({ name, comment_list, char1, char2 }) {
+function ShipCard({ name, comment_list, char1, char2, shipID, onAddComment }) {
   const [shipPic1, setShipPic1] = useState('');
   const [shipPic2, setShipPic2] = useState('');
   // const [handleChange, setHandleChange] = useState('');
 
+  console.log(comment_list)
+  
   const characterRetriever = (id1, id2) => {
     fetch(`http://localhost:9292/characters/${id1}`)
       .then((response) => response.json())
@@ -17,12 +19,34 @@ function ShipCard({ name, comment_list, char1, char2 }) {
 
   characterRetriever(char1, char2);
 
+  const handleClickAdd = () => {
+    let changes = {};
+    changes = prompt('Add your comment!', ``);
+    if (changes !== null) {
+      handleSubmit(changes);
+    }
+  };
+
+  const handleSubmit = (changes) => {
+    fetch(`http://localhost:9292/comments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'anonymous',
+        comment: changes,
+        ship_id: shipID
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => onAddComment(data));
+  };
+
   return (
     <div className='ship-card'>
       <div className='name-btn-img'>
         <div className='name-btn'>
           <h2>{name}</h2>
-          <button className='ship-comment-btn'>Add Comment</button>
+          <button onClick={handleClickAdd} className='ship-comment-btn'>Add Comment</button>
         </div>
         <img
           src={shipPic1}
