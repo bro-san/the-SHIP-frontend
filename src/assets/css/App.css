@@ -43,4 +43,11 @@ button {
 
 .ship-comment-btn {
   padding-right: 5px;
+  max-width: 100%;
+}
+
+.comment-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

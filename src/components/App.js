@@ -23,27 +23,27 @@ function App() {
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
   const [allShips, setAllShips] = useState([]);
-  const [allComments, setAllComments] = useState([]);
+  // const [allComments, setAllComments] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:9292/characters')
       .then((response) => response.json())
       .then((data) => setAllCharacters(data));
 
-    fetch('http://localhost:9292/ships')
+    fetch('http://localhost:9292/ships?include_comments')
       .then((response) => response.json())
       .then((data) => setAllShips(data));
 
-    fetch('http://localhost:9292/comments')
-      .then((response) => response.json())
-      .then((data) => setAllComments(data));
+    //   fetch('http://localhost:9292/comments')
+    //     .then((response) => response.json())
+    //     .then((data) => setAllComments(data));
   }, []);
 
-  useEffect(() => {
-    fetch('http://localhost:9292/ships')
-      .then((response) => response.json())
-      .then((data) => setAllShips(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:9292/ships')
+  //     .then((response) => response.json())
+  //     .then((data) => setAllShips(data));
+  // }, []);
 
   function createShip() {
     console.log('createShip');
@@ -79,7 +79,7 @@ function App() {
           <BrowseShips
             allShips={allShips}
             allCharacters={allCharacters}
-            allComments={allComments}
+            // allComments={allComments}
           />
         </Route>
         <Route exact path='/characters'>
