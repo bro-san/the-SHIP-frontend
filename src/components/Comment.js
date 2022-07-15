@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
 
 function Comment({ id, name, comment }) {
-  const [formContent, setFormContent] = useState('');
+  // const [formContent, setFormContent] = useState('');
 
   const handleClickEdit = () => {
-    let changes = prompt('Edit your comment!', `${comment}`);
-    console.log(changes);
-    setFormContent(changes);
-    console.log(formContent);
-    //   if (formContent === true) {
-    //     handleSubmit();
-    //   }
+    let changes = {};
+    changes.comment = prompt('Edit your comment!', `${comment}`);
+    if (changes !== null) {
+      handleSubmit(changes);
+    }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (changes) => {
     fetch(`http://localhost:9292/comments/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formContent),
+      body: JSON.stringify(changes),
     })
       .then((response) => response.json())
       .then((data) => console.log(data));
