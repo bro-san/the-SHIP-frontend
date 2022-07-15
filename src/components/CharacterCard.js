@@ -35,9 +35,11 @@ function CharacterCard({
   }
 
   return (
-    <div className='characterCard'>
+    <div className='character-card'>
       <h2>{name}</h2>
-      <img src={image} alt='character' />
+      <div className='character-image-container'>
+        <img src={image} alt='character' className='character-img' />
+      </div>
       <h3>{animeName} </h3>
       <h6>{gender}</h6>
       <h6>{desc}</h6>

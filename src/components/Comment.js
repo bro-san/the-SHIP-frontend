@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Comment({ id, name, comment, onChangeComment }) {
   // const [formContent, setFormContent] = useState('');
@@ -25,13 +25,13 @@ function Comment({ id, name, comment, onChangeComment }) {
     fetch(`http://localhost:9292/comments/${id}`, {
       method: 'DELETE',
     })
-    .then((response) => response.json())
-    .then((data) => onChangeComment(data))
+      .then((response) => response.json())
+      .then((data) => onChangeComment(data));
   };
 
   return (
     <ul className='comment-list'>
-      <li>
+      <li className='comment'>
         {name} says "{comment}"<button onClick={handleClickEdit}>Edit</button>
         <button onClick={handleClickDelete}>Delete</button>
       </li>

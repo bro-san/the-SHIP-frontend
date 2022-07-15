@@ -3,7 +3,7 @@ import ShipCard from './ShipCard';
 
 function BrowseShips({ allShips, allCharacters, onChangeComment }) {
   return (
-    <>
+    <div className='ship-container'>
       {allShips.map((ship) => (
         <ShipCard
           name={ship.name}
@@ -16,7 +16,7 @@ function BrowseShips({ allShips, allCharacters, onChangeComment }) {
           onChangeComment={onChangeComment}
         />
       ))}
-    </>
+    </div>
   );
 }
 

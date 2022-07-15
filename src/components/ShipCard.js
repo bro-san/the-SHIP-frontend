@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
 
-function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment }) {
+function ShipCard({
+  name,
+  comment_list,
+  char1,
+  char2,
+  shipID,
+  onChangeComment,
+}) {
   const [shipPic1, setShipPic1] = useState('');
   const [shipPic2, setShipPic2] = useState('');
   // const [handleChange, setHandleChange] = useState('');
 
-  console.log(comment_list)
-  
+  console.log(comment_list);
+
   const characterRetriever = (id1, id2) => {
     fetch(`http://localhost:9292/characters/${id1}`)
       .then((response) => response.json())
@@ -21,7 +28,8 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment })
 
   const handleClickAdd = () => {
     let changes = {};
-    changes = prompt('Add your comment!', ``);
+    changes.name = prompt('Who are you?', ``);
+    changes.comment = prompt('Add your comment!', ``);
     if (changes !== null) {
       handleSubmit(changes);
     }
@@ -32,9 +40,9 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment })
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: 'anonymous',
-        comment: changes,
-        ship_id: shipID
+        name: changes.name,
+        comment: changes.comment,
+        ship_id: shipID,
       }),
     })
       .then((response) => response.json())
@@ -43,11 +51,9 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment })
 
   return (
     <div className='ship-card'>
-      <div className='name-btn-img'>
-        <div className='name-btn'>
-          <h2>{name}</h2>
-          <button onClick={handleClickAdd} className='ship-comment-btn'>Add Comment</button>
-        </div>
+      {/* <div className='name-btn'> */}
+      <h2 className='ship-name'>{name}</h2>
+      <div className='ship-image-container'>
         <img
           src={shipPic1}
           height='150'
@@ -61,6 +67,10 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment })
           alt='ship-char2'
         />
       </div>
+      <button onClick={handleClickAdd} className='ship-comment-btn'>
+        Add Comment
+      </button>
+      {/* </div> */}
       {comment_list.length ? (
         comment_list.map((comment) => (
           <Comment
@@ -72,7 +82,7 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment })
           />
         ))
       ) : (
-        <p>No comments yet!</p>
+        <p className='comment'>No comments yet! What do you think?</p>
       )}
     </div>
   );
