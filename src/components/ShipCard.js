@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
 
-function ShipCard({ name, comments, char1, char2 }) {
+function ShipCard({ name, comment_list, char1, char2 }) {
   const [shipPic1, setShipPic1] = useState('');
   const [shipPic2, setShipPic2] = useState('');
+  // const [handleChange, setHandleChange] = useState('');
 
   const characterRetriever = (id1, id2) => {
     fetch(`http://localhost:9292/characters/${id1}`)
@@ -15,10 +16,14 @@ function ShipCard({ name, comments, char1, char2 }) {
   };
 
   characterRetriever(char1, char2);
+
   return (
     <div className='ship-card'>
-      <div className='name-img'>
-        <h2>{name}</h2>
+      <div className='name-btn-img'>
+        <div className='name-btn'>
+          <h2>{name}</h2>
+          <button className='ship-comment-btn'>Add Comment</button>
+        </div>
         <img
           src={shipPic1}
           height='150'
@@ -32,12 +37,19 @@ function ShipCard({ name, comments, char1, char2 }) {
           alt='ship-char2'
         />
       </div>
-      <p>
-        {comments}Comments go here!<button>Edit</button> <button>Delete</button>
-      </p>
-      {/* {comments.map((comment) => (
-        <Comment comment={comment} />
-      ))} */}
+      {comment_list.length ? (
+        comment_list.map((comment) => (
+          <Comment
+            id={comment.id}
+            name={comment.name}
+            comment={comment.comment}
+            key={comment.name}
+            // setHandleChange={setHandleChange}
+          />
+        ))
+      ) : (
+        <p>No comments yet!</p>
+      )}
     </div>
   );
 }
