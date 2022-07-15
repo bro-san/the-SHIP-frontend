@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
 
-function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment }) {
+function ShipCard({
+  name,
+  comment_list,
+  char1,
+  char2,
+  shipID,
+  onChangeComment,
+}) {
   const [shipPic1, setShipPic1] = useState('');
   const [shipPic2, setShipPic2] = useState('');
   // const [handleChange, setHandleChange] = useState('');
 
-  console.log(comment_list)
-  
+  console.log(comment_list);
+
   const characterRetriever = (id1, id2) => {
     fetch(`http://localhost:9292/characters/${id1}`)
       .then((response) => response.json())
@@ -21,7 +28,8 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment })
 
   const handleClickAdd = () => {
     let changes = {};
-    changes = prompt('Add your comment!', ``);
+    changes.name = prompt('Who are you?', ``);
+    changes.comment = prompt('Add your comment!', ``);
     if (changes !== null) {
       handleSubmit(changes);
     }
@@ -32,9 +40,9 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment })
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: 'anonymous',
-        comment: changes,
-        ship_id: shipID
+        name: changes.name,
+        comment: changes.comment,
+        ship_id: shipID,
       }),
     })
       .then((response) => response.json())
@@ -46,7 +54,9 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment })
       <div className='name-btn-img'>
         <div className='name-btn'>
           <h2>{name}</h2>
-          <button onClick={handleClickAdd} className='ship-comment-btn'>Add Comment</button>
+          <button onClick={handleClickAdd} className='ship-comment-btn'>
+            Add Comment
+          </button>
         </div>
         <img
           src={shipPic1}

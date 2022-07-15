@@ -35,7 +35,7 @@ function CharacterCard({
   }
 
   return (
-    <div className='characterCard'>
+    <div className='character-card'>
       <h2>{name}</h2>
       <img src={image} alt='character' />
       <h3>{animeName} </h3>

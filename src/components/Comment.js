@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Comment({ id, name, comment, onChangeComment }) {
   // const [formContent, setFormContent] = useState('');
@@ -25,8 +25,8 @@ function Comment({ id, name, comment, onChangeComment }) {
     fetch(`http://localhost:9292/comments/${id}`, {
       method: 'DELETE',
     })
-    .then((response) => response.json())
-    .then((data) => onChangeComment(data))
+      .then((response) => response.json())
+      .then((data) => onChangeComment(data));
   };
 
   return (
