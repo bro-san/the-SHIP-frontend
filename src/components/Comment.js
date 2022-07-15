@@ -31,7 +31,7 @@ function Comment({ id, name, comment, onChangeComment }) {
 
   return (
     <ul className='comment-list'>
-      <li>
+      <li className='comment'>
         {name} says "{comment}"<button onClick={handleClickEdit}>Edit</button>
         <button onClick={handleClickDelete}>Delete</button>
       </li>

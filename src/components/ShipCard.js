@@ -51,13 +51,9 @@ function ShipCard({
 
   return (
     <div className='ship-card'>
-      <div className='name-btn-img'>
-        <div className='name-btn'>
-          <h2>{name}</h2>
-          <button onClick={handleClickAdd} className='ship-comment-btn'>
-            Add Comment
-          </button>
-        </div>
+      {/* <div className='name-btn'> */}
+      <h2 className='ship-name'>{name}</h2>
+      <div className='ship-image-container'>
         <img
           src={shipPic1}
           height='150'
@@ -71,6 +67,10 @@ function ShipCard({
           alt='ship-char2'
         />
       </div>
+      <button onClick={handleClickAdd} className='ship-comment-btn'>
+        Add Comment
+      </button>
+      {/* </div> */}
       {comment_list.length ? (
         comment_list.map((comment) => (
           <Comment
@@ -82,7 +82,7 @@ function ShipCard({
           />
         ))
       ) : (
-        <p>No comments yet!</p>
+        <p className='comment'>No comments yet! What do you think?</p>
       )}
     </div>
   );

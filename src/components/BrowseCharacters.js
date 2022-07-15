@@ -32,34 +32,38 @@ function BrowseCharacters({
 
   return (
     <>
-      <Search
-        formQuery={formQuery}
-        setFormQuery={setFormQuery}
-        optionQuery={optionQuery}
-        setOptionQuery={setOptionQuery}
-      />
-      <button className='ship-button' onClick={createShip}>
-        Ship that couple!
-      </button>
-      {searchCharacters.map((character) => (
-        <CharacterCard
-          key={character.id}
-          id={character.id}
-          name={character.name}
-          animeName={character.anime_name}
-          image={character.imageURL}
-          desc={character.description}
-          gender={character.gender}
-          setShip1={setShip1}
-          setShip2={setShip2}
-          setShip1Name={setShip1Name}
-          setShip2Name={setShip2Name}
-          checked1={checked1}
-          setChecked1={setChecked1}
-          checked2={checked2}
-          setChecked2={setChecked2}
+      <div className='search-and-ship'>
+        <Search
+          formQuery={formQuery}
+          setFormQuery={setFormQuery}
+          optionQuery={optionQuery}
+          setOptionQuery={setOptionQuery}
         />
-      ))}
+        <button className='ship-button' onClick={createShip}>
+          Ship that couple!
+        </button>
+      </div>
+      <div className='character-container'>
+        {searchCharacters.map((character) => (
+          <CharacterCard
+            key={character.id}
+            id={character.id}
+            name={character.name}
+            animeName={character.anime_name}
+            image={character.imageURL}
+            desc={character.description}
+            gender={character.gender}
+            setShip1={setShip1}
+            setShip2={setShip2}
+            setShip1Name={setShip1Name}
+            setShip2Name={setShip2Name}
+            checked1={checked1}
+            setChecked1={setChecked1}
+            checked2={checked2}
+            setChecked2={setChecked2}
+          />
+        ))}
+      </div>
     </>
   );
 }

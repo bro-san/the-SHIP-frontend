@@ -22,7 +22,7 @@ function Header() {
         </NavLink>
         THE SHIP
         <Typography
-          variant='h4'
+          variant='h5'
           gutterBottom
           component='div'
           sx={{ margin: '0px' }}

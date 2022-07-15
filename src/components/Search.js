@@ -13,7 +13,7 @@ function Search({ formQuery, setFormQuery, setOptionQuery }) {
 
   return (
     <>
-      <form>
+      <form className='search'>
         <label>Filter by Gender </label>
         <select onChange={handleOptionChange}>
           <option value='All'>All</option>
