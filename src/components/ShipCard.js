@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
 
-function ShipCard({ name, comment_list, char1, char2, shipID, onAddComment }) {
+function ShipCard({ name, comment_list, char1, char2, shipID, onChangeComment }) {
   const [shipPic1, setShipPic1] = useState('');
   const [shipPic2, setShipPic2] = useState('');
   // const [handleChange, setHandleChange] = useState('');
@@ -38,7 +38,7 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onAddComment }) {
       }),
     })
       .then((response) => response.json())
-      .then((data) => onAddComment(data));
+      .then((data) => onChangeComment(data));
   };
 
   return (
@@ -68,7 +68,7 @@ function ShipCard({ name, comment_list, char1, char2, shipID, onAddComment }) {
             name={comment.name}
             comment={comment.comment}
             key={comment.name}
-            // setHandleChange={setHandleChange}
+            onChangeComment={onChangeComment}
           />
         ))
       ) : (
